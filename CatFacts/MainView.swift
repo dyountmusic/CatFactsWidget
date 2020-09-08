@@ -14,7 +14,8 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             CatFactView()
-        }.environmentObject(loader)
+        }
+        .environmentObject(loader)
     }
 }
 
@@ -24,14 +25,24 @@ struct CatFactView: View {
 
     var body: some View {
         VStack {
-            Text("Cat Fact")
-                .font(.headline)
+            Text("🐈 Cat Fact")
+                .font(.title2)
+                .padding()
             if let fact = loader.fact?.fact {
                 Text(fact)
             } else {
                 ProgressView()
             }
         }
+        .toolbar {
+            ToolbarItem(
+                placement: .primaryAction) {
+                            Button("New Fact") { loader.fetch() }
+                        }
+        }
+        .padding()
+        .onAppear(perform: loader.fetch)
+        .navigationTitle("Cat Facts")
     }
 }
 
@@ -44,7 +55,9 @@ class CatFactViewModel: ObservableObject {
         service.fetchFact { result in
             switch result {
             case .success(let fact):
-                self.fact = fact
+                DispatchQueue.main.async {
+                    self.fact = fact
+                }
             case .failure(let error):
                 print("error occured fetching cat fact:  \(error)")
             }

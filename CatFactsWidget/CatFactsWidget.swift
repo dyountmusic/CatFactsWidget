@@ -24,7 +24,7 @@ struct CatFactsWidgetProvider: TimelineProvider {
         service.fetchFact { result in
             switch result {
             case .success(let fact):
-                let entry = CatFactWidgetEntry(date: Date(), catFact: fact)
+                let entry = CatFactWidgetEntry(date: Date().addingTimeInterval(15 * 60), catFact: fact)
                 let timeline = Timeline(entries: [entry], policy: .atEnd)
                 completion(timeline)
                 return
@@ -32,11 +32,6 @@ struct CatFactsWidgetProvider: TimelineProvider {
                 print("error with: \(error.localizedDescription)")
             }
         }
-
-        // Else fall back to placeholder data
-        let entry = CatFactWidgetEntry(date: Date(), catFact: CatFact(fact: "I am not supposed to appear. Meow."))
-        let timeline = Timeline(entries: [entry], policy: .atEnd)
-        completion(timeline)
     }
 }
 
@@ -45,9 +40,6 @@ struct CatFactWidgetEntry: TimelineEntry {
     let catFact: CatFact
 }
 
-struct CatFact: Codable {
-    let fact: String
-}
 
 struct CatFactsWidgetEntryView : View {
     var entry: CatFactsWidgetProvider.Entry
@@ -62,6 +54,8 @@ struct CatFactsWidgetEntryView : View {
             }
             Spacer()
             Text(entry.catFact.fact)
+                .font(.subheadline)
+                .minimumScaleFactor(0.5)
         }
         .padding()
     }
