@@ -20,14 +20,17 @@ struct CatFactsWidgetProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
 
-        let service = CatFactService()
-        service.fetchFact { success in
-            guard success, let fact = service.fact else { fatalError() }
-
-            let entry = CatFactWidgetEntry(date: Date(), catFact: fact)
-            let timeline = Timeline(entries: [entry], policy: .atEnd)
-            completion(timeline)
-            return
+        let service = CatFactLoader()
+        service.fetchFact { result in
+            switch result {
+            case .success(let fact):
+                let entry = CatFactWidgetEntry(date: Date(), catFact: fact)
+                let timeline = Timeline(entries: [entry], policy: .atEnd)
+                completion(timeline)
+                return
+            case .failure(let error):
+                print("error with: \(error.localizedDescription)")
+            }
         }
 
         // Else fall back to placeholder data
