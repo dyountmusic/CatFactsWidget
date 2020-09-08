@@ -9,40 +9,58 @@ import WidgetKit
 import SwiftUI
 
 struct CatFactsWidgetProvider: TimelineProvider {
-    func placeholder(in context: Context) -> CatFactWidgeEntry {
-        CatFactWidgeEntry(date: Date())
+    func placeholder(in context: Context) -> CatFactWidgetEntry {
+        CatFactWidgetEntry(date: Date(), catFact: CatFact(fact: "This is a placeholder cat fact."))
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (CatFactWidgeEntry) -> ()) {
-        let entry = CatFactWidgeEntry(date: Date())
+    func getSnapshot(in context: Context, completion: @escaping (CatFactWidgetEntry) -> ()) {
+        let entry = CatFactWidgetEntry(date: Date(), catFact: CatFact(fact: "Add this widget to see cat facts!"))
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [CatFactWidgeEntry] = []
 
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = CatFactWidgeEntry(date: entryDate)
-            entries.append(entry)
+        let service = CatFactService()
+        service.fetchFact { success in
+            guard success, let fact = service.fact else { fatalError() }
+
+            let entry = CatFactWidgetEntry(date: Date(), catFact: fact)
+            let timeline = Timeline(entries: [entry], policy: .atEnd)
+            completion(timeline)
+            return
         }
 
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        // Else fall back to placeholder data
+        let entry = CatFactWidgetEntry(date: Date(), catFact: CatFact(fact: "I am not supposed to appear. Meow."))
+        let timeline = Timeline(entries: [entry], policy: .atEnd)
         completion(timeline)
     }
 }
 
-struct CatFactWidgeEntry: TimelineEntry {
+struct CatFactWidgetEntry: TimelineEntry {
     let date: Date
+    let catFact: CatFact
+}
+
+struct CatFact: Codable {
+    let fact: String
 }
 
 struct CatFactsWidgetEntryView : View {
     var entry: CatFactsWidgetProvider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        VStack(alignment: .leading) {
+            HStack {
+                Text("🐈 Cat Facts")
+                    .font(.headline)
+                    .bold()
+                Spacer()
+            }
+            Spacer()
+            Text(entry.catFact.fact)
+        }
+        .padding()
     }
 }
 
@@ -61,7 +79,7 @@ struct CatFactsWidget: Widget {
 
 struct CatFactsWidget_Previews: PreviewProvider {
     static var previews: some View {
-        CatFactsWidgetEntryView(entry: CatFactWidgeEntry(date: Date()))
+        CatFactsWidgetEntryView(entry: CatFactWidgetEntry(date: Date(), catFact: CatFact(fact: "Preview fact!")))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

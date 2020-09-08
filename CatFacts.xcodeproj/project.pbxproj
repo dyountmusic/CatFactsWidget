@@ -16,6 +16,7 @@
 		EAA1634E25081779001037DF /* CatFactsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA1634D25081779001037DF /* CatFactsWidget.swift */; };
 		EAA163502508177A001037DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAA1634F2508177A001037DF /* Assets.xcassets */; };
 		EAA163542508177A001037DF /* CatFactsWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EAA1634925081779001037DF /* CatFactsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EAA16359250819E3001037DF /* CatFactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA16358250819E3001037DF /* CatFactService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		EAA1634D25081779001037DF /* CatFactsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactsWidget.swift; sourceTree = "<group>"; };
 		EAA1634F2508177A001037DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAA163512508177A001037DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAA16358250819E3001037DF /* CatFactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				EAA1634D25081779001037DF /* CatFactsWidget.swift */,
+				EAA16358250819E3001037DF /* CatFactService.swift */,
 				EAA1634F2508177A001037DF /* Assets.xcassets */,
 				EAA163512508177A001037DF /* Info.plist */,
 			);
@@ -244,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA16359250819E3001037DF /* CatFactService.swift in Sources */,
 				EAA1634E25081779001037DF /* CatFactsWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +387,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CatFacts/Preview Content\"";
+				DEVELOPMENT_TEAM = 93KKH99Z5P;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CatFacts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -405,6 +410,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CatFacts/Preview Content\"";
+				DEVELOPMENT_TEAM = 93KKH99Z5P;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CatFacts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -425,6 +431,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 93KKH99Z5P;
 				INFOPLIST_FILE = CatFactsWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -445,6 +452,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 93KKH99Z5P;
 				INFOPLIST_FILE = CatFactsWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
