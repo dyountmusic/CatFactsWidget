@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA9A3A122508675600B9211E /* CatFactsSmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9A3A112508675600B9211E /* CatFactsSmallWidgetView.swift */; };
+		EA9A3A16250868F300B9211E /* CatFactsMediumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9A3A15250868F300B9211E /* CatFactsMediumWidgetView.swift */; };
 		EAA1631D250816FC001037DF /* CatFactsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA1631C250816FC001037DF /* CatFactsApp.swift */; };
 		EAA1631F250816FC001037DF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA1631E250816FC001037DF /* MainView.swift */; };
 		EAA16321250816FD001037DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAA16320250816FD001037DF /* Assets.xcassets */; };
@@ -47,6 +49,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EA9A3A112508675600B9211E /* CatFactsSmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactsSmallWidgetView.swift; sourceTree = "<group>"; };
+		EA9A3A15250868F300B9211E /* CatFactsMediumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactsMediumWidgetView.swift; sourceTree = "<group>"; };
 		EAA16319250816FC001037DF /* CatFacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatFacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAA1631C250816FC001037DF /* CatFactsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactsApp.swift; sourceTree = "<group>"; };
 		EAA1631E250816FC001037DF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -83,6 +87,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA9A3A13250868D600B9211E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EA9A3A112508675600B9211E /* CatFactsSmallWidgetView.swift */,
+				EA9A3A15250868F300B9211E /* CatFactsMediumWidgetView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EA9A3A14250868E300B9211E /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				EAA16358250819E3001037DF /* CatFactService.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		EAA16310250816FC001037DF = {
 			isa = PBXGroup;
 			children = (
@@ -136,7 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				EAA1634D25081779001037DF /* CatFactsWidget.swift */,
-				EAA16358250819E3001037DF /* CatFactService.swift */,
+				EA9A3A13250868D600B9211E /* Views */,
+				EA9A3A14250868E300B9211E /* Other */,
 				EAA1634F2508177A001037DF /* Assets.xcassets */,
 				EAA163512508177A001037DF /* Info.plist */,
 			);
@@ -256,6 +278,8 @@
 			files = (
 				EAA1635D25083561001037DF /* CatFactModel.swift in Sources */,
 				EAA16359250819E3001037DF /* CatFactService.swift in Sources */,
+				EA9A3A16250868F300B9211E /* CatFactsMediumWidgetView.swift in Sources */,
+				EA9A3A122508675600B9211E /* CatFactsSmallWidgetView.swift in Sources */,
 				EAA1634E25081779001037DF /* CatFactsWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

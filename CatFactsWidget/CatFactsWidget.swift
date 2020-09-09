@@ -18,7 +18,7 @@ struct CatFactsWidgetProvider: TimelineProvider {
         completion(entry)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<CatFactWidgetEntry>) -> ()) {
 
         let service = CatFactLoader()
         service.fetchFact { result in
@@ -42,22 +42,22 @@ struct CatFactWidgetEntry: TimelineEntry {
 
 
 struct CatFactsWidgetEntryView : View {
+
+    @Environment(\.widgetFamily) var family: WidgetFamily
+
     var entry: CatFactsWidgetProvider.Entry
 
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text("🐈 Cat Facts")
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
-            Spacer()
-            Text(entry.catFact.fact)
-                .font(.subheadline)
-                .minimumScaleFactor(0.5)
+        switch family {
+        case .systemSmall:
+            CatFactsWidgetSmallView(entry: entry)
+        case .systemMedium:
+            CatFactsWidgetMediumView(entry: entry)
+        case .systemLarge:
+            CatFactsWidgetSmallView(entry: entry)
+        default:
+            CatFactsWidgetSmallView(entry: entry)
         }
-        .padding()
     }
 }
 
@@ -69,8 +69,9 @@ struct CatFactsWidget: Widget {
         StaticConfiguration(kind: kind, provider: CatFactsWidgetProvider()) { entry in
             CatFactsWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Cat Facts")
+        .description("The facts you need about cats. Now.")
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
