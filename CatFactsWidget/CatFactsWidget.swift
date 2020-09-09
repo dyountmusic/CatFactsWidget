@@ -10,11 +10,11 @@ import SwiftUI
 
 struct CatFactsWidgetProvider: TimelineProvider {
     func placeholder(in context: Context) -> CatFactWidgetEntry {
-        CatFactWidgetEntry(date: Date(), catFact: CatFact(fact: "This is a placeholder cat fact."))
+        CatFactWidgetEntry(date: Date(), catFact: CatFact(fact: "This is a placeholder cat fact. It goes on and on and on until it ends which will be soon but who can really say."))
     }
 
     func getSnapshot(in context: Context, completion: @escaping (CatFactWidgetEntry) -> ()) {
-        let entry = CatFactWidgetEntry(date: Date(), catFact: CatFact(fact: "Add this widget to see cat facts!"))
+        let entry = CatFactWidgetEntry(date: Date(), catFact: CatFact(fact: "Did you know adding this widget will dramatically increase your happiness index by a factor of seven?"))
         completion(entry)
     }
 
