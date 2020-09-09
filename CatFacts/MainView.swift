@@ -34,15 +34,14 @@ struct CatFactView: View {
                 ProgressView()
             }
         }
+        .animation(.easeInOut)
         .toolbar {
-            ToolbarItem(
-                placement: .primaryAction) {
-                            Button("New Fact") { loader.fetch() }
-                        }
+            ToolbarItem(placement: .primaryAction) {
+                Button("New Fact") { withAnimation(.easeInOut) { loader.fetch() } }
+            }
         }
         .padding()
         .onAppear(perform: loader.fetch)
-        .navigationTitle("Cat Facts")
     }
 }
 
