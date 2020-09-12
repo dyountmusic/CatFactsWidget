@@ -10,11 +10,19 @@ import SwiftUI
 struct MainView: View {
 
     @StateObject var loader = CatFactViewModel()
+    @State var pasteNotificationPresented = false
 
     var body: some View {
         NavigationView {
             CatFactView()
         }
+        .overlay(
+            VStack {
+                Spacer()
+                Text("overlay")
+            }
+            .padding()
+        )
         .navigationViewStyle(StackNavigationViewStyle())
         .environmentObject(loader)
     }
@@ -29,6 +37,10 @@ struct CatFactView: View {
             Text("🐈 Cat Fact")
                 .font(.title2)
                 .padding()
+                .onLongPressGesture {
+                    let pasteboard = UIPasteboard.general
+                    pasteboard.string = loader.fact?.fact
+                }
             if let fact = loader.fact?.fact {
                 Text(fact)
             } else {
