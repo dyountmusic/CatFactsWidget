@@ -15,7 +15,7 @@ struct CatFactsWidgetMediumView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text("🐈 Cat Facts")
+                Text("🐈 Cat Fact")
                     .font(.headline)
                     .bold()
                 Spacer()

@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  CatFacts
 //
 //  Created by Daniel Yount on 9/8/20.
