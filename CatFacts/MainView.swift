@@ -15,6 +15,7 @@ struct MainView: View {
         NavigationView {
             CatFactView()
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .environmentObject(loader)
     }
 }
